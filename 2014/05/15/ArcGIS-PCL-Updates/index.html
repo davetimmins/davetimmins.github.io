@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Inspired by a recent blog post by @paulcbetts I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality s">
+<meta name="keywords" content="arcgis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArcGIS.PCL Updates">
+<meta property="og:url" content="https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/index.html">
+<meta property="og:site_name" content="davetimmins.github.io">
+<meta property="og:description" content="Inspired by a recent blog post by @paulcbetts I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality s">
+<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispclsolution original.png">
+<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispclsolution current.png">
+<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispcl project comp.png">
+<meta property="og:updated_time" content="2017-07-16T02:53:24.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArcGIS.PCL Updates">
+<meta name="twitter:description" content="Inspired by a recent blog post by @paulcbetts I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality s">
+<meta name="twitter:image" content="https://davetimmins.github.io/assets/arcgispclsolution original.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ArcGIS.PCL Updates</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="davetimmins.github.io" type="application/atom+xml" />
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2014/04/11/Sneaky-searching-with-a-Fake-ArcGIS-Locator-and-Nancy/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&text=ArcGIS.PCL Updates"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&is_video=false&description=ArcGIS.PCL Updates"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS.PCL Updates&body=Check out this article: https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&name=ArcGIS.PCL Updates&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Updates"><span class="toc-number">1.</span> <span class="toc-text">Other Updates</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ArcGIS.PCL Updates
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">davetimmins.github.io</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2014-05-15T00:00:00.000Z" itemprop="datePublished">2014-05-15</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/arcgis/">arcgis</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Inspired by a recent blog post by <a href="https://twitter.com/paulcbetts" target="_blank" rel="external">@paulcbetts</a> I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality so no matter what platform you were targeting, the same code and dependencies would be used. This was working fine to some degree but I realised that I was including more than I needed to for certain platforms and I had also been wondering on the best way to implement some code that wasn’t available to a portable class library. Moving to this updated approach has allowed me to do both of these things better and with very little effort so I’ll explain what I did.</p>
+<p>The original solution looked like this.</p>
+<p><img src="https://davetimmins.github.io/assets/arcgispclsolution original.png" alt="Original solution"></p>
+<p>With just the portable class library and some tests. Whereas the current solution is</p>
+<p><img src="https://davetimmins.github.io/assets/arcgispclsolution current.png" alt="Current solution"></p>
+<p>This has the same portable class library with almost all of the same code in it but now there are platform specific projects which allow for platform specific code to be written for each of them is required. The portable class library project now only references the .NET Portable Subset too. Since I left the majority of the code in the PCL, I also reference the PCL from the platform specific projects.</p>
+<p>In addition to using the PCL in the other projects I have a couple of other classes that are the same code but since their platform dependencies are different I am not including them in the PCL. Rather than copy the code for each project I just add them as linked files, so if we look at the iOS and .NET versions you can see that they both have 2 linked files and then just 1 platform specific file</p>
+<p><img src="https://davetimmins.github.io/assets/arcgispcl project comp.png" alt="Project comparison"></p>
+<p>So what I’ve had to do so far is</p>
+<ul>
+<li>Create new projects, 1 for each supported platform</li>
+<li>Remove a couple of classes from the PCL</li>
+<li>Add those classes as linked files to the platform specific projects</li>
+<li>Add any platform specific code to each project</li>
+</ul>
+<p>And now my final step is to make sure that NuGet knows what to do when a reference is added to this package. I can do this by adding platform specific dependencies in my .nuspec file and what I ended up with is this</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"net40"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Bcl.Async"</span> <span class="attr">version</span>=<span class="string">"1.0.168"</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Net.Http"</span> <span class="attr">version</span>=<span class="string">"2.2.22"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"sl5"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Bcl.Async"</span> <span class="attr">version</span>=<span class="string">"1.0.168"</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Net.Http"</span> <span class="attr">version</span>=<span class="string">"2.2.22"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"wp8"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Net.Http"</span> <span class="attr">version</span>=<span class="string">"2.2.22"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"net45"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Net.Http"</span> <span class="attr">version</span>=<span class="string">"2.2.22"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"netcore45"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"Microsoft.Net.Http"</span> <span class="attr">version</span>=<span class="string">"2.2.22"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"MonoAndroid1"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"modernhttpclient"</span> <span class="attr">version</span>=<span class="string">"1.2.2"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"MonoTouch1"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span> <span class="attr">id</span>=<span class="string">"modernhttpclient"</span> <span class="attr">version</span>=<span class="string">"1.2.2"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">group</span> <span class="attr">targetFramework</span>=<span class="string">"portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Pretty simple right. Now when you add ArcGIS.PCL from NuGet you will get the version that targets your platform.</p>
+<p>One other thing I did as part of this was to try and make it easier to get up and running with the code. Since most of the time you are working with this library is going to involve calling ArcGIS Server resources, some form of serialization is involved and this used to require creating your own implementation of <code>ISerializer</code> to facilitate this (albeit usually just a copy paste from the read me). To this end I created <code>Json.NET</code> and <code>ServiceStack.Text</code> (version 3) <code>ISerializer</code> <a href="https://www.nuget.org/packages?q=arcgis.pcl" target="_blank" rel="external">NuGet packages</a>. Since <code>Json.NET</code> is also a PCL it means that the <code>ArcGIS.PCL.JsonDotNetSerializer</code> package is also a PCL so now you can see one benefit of this approach. You can still use your own serializer if you want though.</p>
+<h3 id="Other-Updates"><a href="#Other-Updates" class="headerlink" title="Other Updates"></a>Other Updates</h3><p><a href="https://components.xamarin.com/view/arcgis.pcl" target="_blank" rel="external">ArcGIS.PCL</a> is now on the Xamarin Component Store!</p>
+<p>There has been some new functionality added since the previous blog post (in addition to fixing stuff :)) but rather than waffle on about it I’ll just be lazy and list it</p>
+<ul>
+<li>Added <code>ArcGISOnlineAppLoginOAuthProvider</code> for creating OAuth tokens to use with ArcGIS Online services.</li>
+<li>Added ArcGIS Online <code>IEndpoint</code></li>
+<li>Added <code>ObjectIds</code> property to <code>Query</code> operation</li>
+<li>Added <code>QueryForIds</code> operation</li>
+<li>Added <code>QueryForCount</code> operation</li>
+<li>Token generation works better for various scenarios and the requests are encrypted if supported on the server</li>
+</ul>
+<p>and finally I am now using a <a href="http://gruntjs.com/" target="_blank" rel="external">Grunt</a> task to build the NuGet packages, it is super simple and very easy to understand so take a look on <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/gruntfile.js" target="_blank" rel="external">GitHub</a> if you are interested. To test these I have a <a href="https://www.myget.org/" target="_blank" rel="external">MyGet</a> feed setup and use <a href="https://ci.appveyor.com" target="_blank" rel="external">AppVeyor</a> as a build server.</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Updates"><span class="toc-number">1.</span> <span class="toc-text">Other Updates</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&text=ArcGIS.PCL Updates"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&is_video=false&description=ArcGIS.PCL Updates"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS.PCL Updates&body=Check out this article: https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&title=ArcGIS.PCL Updates"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/&name=ArcGIS.PCL Updates&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Dave Timmins
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-43823237-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

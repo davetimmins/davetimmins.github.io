@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="DemoSource A common request for web map applications is to have some sort of bookmark function. Bookmarks are just a quick way of jumping to a saved extent or view for your map and they are usually pr">
+<meta name="keywords" content="arcgis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simple Extent Sharing for your Map App">
+<meta property="og:url" content="https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/index.html">
+<meta property="og:site_name" content="davetimmins.github.io">
+<meta property="og:description" content="DemoSource A common request for web map applications is to have some sort of bookmark function. Bookmarks are just a quick way of jumping to a saved extent or view for your map and they are usually pr">
+<meta property="og:updated_time" content="2017-07-16T02:54:15.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple Extent Sharing for your Map App">
+<meta name="twitter:description" content="DemoSource A common request for web map applications is to have some sort of bookmark function. Bookmarks are just a quick way of jumping to a saved extent or view for your map and they are usually pr">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Simple Extent Sharing for your Map App</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="davetimmins.github.io" type="application/atom+xml" />
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2014/06/30/Using-ArcGIS-Server-with-Xamarin-Forms-Maps/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2014/05/15/ArcGIS-PCL-Updates/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&text=Simple Extent Sharing for your Map App"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&is_video=false&description=Simple Extent Sharing for your Map App"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Simple Extent Sharing for your Map App&body=Check out this article: https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&name=Simple Extent Sharing for your Map App&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Simple Extent Sharing for your Map App
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">davetimmins.github.io</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2014-06-30T00:00:00.000Z" itemprop="datePublished">2014-06-30</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/arcgis/">arcgis</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><a href="http://joosh.azurewebsites.net" target="_blank" rel="external">Demo</a><br><a href="https://github.com/davetimmins/Joosh/blob/master/Joosh.Web.Nancy/scripts/joosh/Bookmarker.js" target="_blank" rel="external">Source</a></p>
+<p>A common request for web map applications is to have some sort of bookmark function. Bookmarks are just a quick way of jumping to a saved extent or view for your map and they are usually presented as a list of meaningful names. This is fine when you are using an application but what if you just want a way of sharing an extent with someone or creating a permalink of your extent / view. Here’s a very quick and easy way to do it for the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API</a> using the <code>window.location.hash</code>.</p>
+<p>We only need to do 2 things for this. First, since we want to know the extent we need to hook into the map <code>extent-change</code> event and update the <code>location.hash</code>. Second, when we start the app we need to check the <code>location.hash</code> and if an extent is there then set the map extent accordingly. That’s it!</p>
+<p>Here’s the entire code for the functionality and a <a href="http://joosh.azurewebsites.net" target="_blank" rel="external">live demo</a>. The source for the demo is on <a href="https://github.com/davetimmins/Joosh" target="_blank" rel="external">GitHub</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">define([</div><div class="line">    <span class="string">'esri/geometry/Extent'</span>,</div><div class="line">    <span class="string">'dojo/_base/lang'</span>,</div><div class="line">    <span class="string">'dojo/_base/declare'</span>,</div><div class="line">    <span class="string">'dojo/on'</span>,</div><div class="line">    <span class="string">'dojo/_base/json'</span>,</div><div class="line">    <span class="string">'dojo/dom'</span>],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></div><div class="line">        Extent,</div><div class="line">        lang,</div><div class="line">        declare,</div><div class="line">        on,</div><div class="line">        dojo,</div><div class="line">        dom</div><div class="line">    ) &#123;</div><div class="line">        <span class="keyword">return</span> declare(<span class="string">'joosh.Bookmarker'</span>, <span class="literal">null</span>, &#123;</div><div class="line">            <span class="attr">map</span>: <span class="literal">null</span>,</div><div class="line"></div><div class="line">            <span class="attr">constructor</span>: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</div><div class="line">                lang.mixin(<span class="keyword">this</span>, params);</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.map) &#123;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (<span class="built_in">window</span>.location.hash) &#123;</div><div class="line">                        <span class="keyword">var</span> hashExtent = dojo.fromJson(<span class="string">'&#123;'</span> + <span class="built_in">window</span>.location.hash.replace(<span class="string">'#'</span>, <span class="string">''</span>) + <span class="string">'&#125;'</span>);</div><div class="line">                        <span class="keyword">var</span> savedExtent = <span class="keyword">new</span> Extent(</div><div class="line">                        &#123;</div><div class="line">                            <span class="attr">xmin</span>: hashExtent.xmin,</div><div class="line">                            <span class="attr">ymin</span>: hashExtent.ymin,</div><div class="line">                            <span class="attr">xmax</span>: hashExtent.xmax,</div><div class="line">                            <span class="attr">ymax</span>: hashExtent.ymax,</div><div class="line">                            <span class="attr">spatialReference</span>: <span class="keyword">this</span>.map.spatialReference</div><div class="line">                        &#125;);</div><div class="line">                        <span class="keyword">this</span>.map.setExtent(savedExtent);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">this</span>.map.on(<span class="string">'extent-change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">                        <span class="built_in">window</span>.location.hash =</div><div class="line">                            <span class="string">"xmin:"</span> + e.extent.xmin +</div><div class="line">                            <span class="string">",ymin:"</span> + e.extent.ymin +</div><div class="line">                            <span class="string">",xmax:"</span> + e.extent.xmax +</div><div class="line">                            <span class="string">",ymax:"</span> + e.extent.ymax;</div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>Now to enable this you need</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.map = <span class="keyword">new</span> <span class="built_in">Map</span>(<span class="string">'map'</span>, config.options);</div><div class="line"></div><div class="line"><span class="built_in">require</span>([<span class="string">'joosh/Bookmarker'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">Bookmarker</span>) </span>&#123;</div><div class="line">    <span class="keyword">new</span> Bookmarker(&#123; <span class="attr">map</span>: <span class="keyword">this</span>.map&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&text=Simple Extent Sharing for your Map App"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&is_video=false&description=Simple Extent Sharing for your Map App"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Simple Extent Sharing for your Map App&body=Check out this article: https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&title=Simple Extent Sharing for your Map App"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/&name=Simple Extent Sharing for your Map App&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Dave Timmins
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-43823237-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

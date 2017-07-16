@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I was recently asked if I’d like to spend a couple of weeks working on a prototype iPhone application. Curious as to what the development experience is like for iOS I obliged and here are some of my i">
+<meta name="keywords" content="xcode,ios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Initial Impressions with iOS and XCode">
+<meta property="og:url" content="https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/index.html">
+<meta property="og:site_name" content="davetimmins.github.io">
+<meta property="og:description" content="I was recently asked if I’d like to spend a couple of weeks working on a prototype iPhone application. Curious as to what the development experience is like for iOS I obliged and here are some of my i">
+<meta property="og:updated_time" content="2017-07-16T02:53:56.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Initial Impressions with iOS and XCode">
+<meta name="twitter:description" content="I was recently asked if I’d like to spend a couple of weeks working on a prototype iPhone application. Curious as to what the development experience is like for iOS I obliged and here are some of my i">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Initial Impressions with iOS and XCode</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="davetimmins.github.io" type="application/atom+xml" />
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2011/11/21/Enhancing-GIS-WebApps-with-SignalR/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&text=Initial Impressions with iOS and XCode"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&is_video=false&description=Initial Impressions with iOS and XCode"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Initial Impressions with iOS and XCode&body=Check out this article: https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&name=Initial Impressions with iOS and XCode&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Initial Impressions with iOS and XCode
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">davetimmins.github.io</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2012-07-18T00:00:00.000Z" itemprop="datePublished">2012-07-18</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ios/">ios</a>, <a class="tag-link" href="/tags/xcode/">xcode</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I was recently asked if I’d like to spend a couple of weeks working on a prototype iPhone application. Curious as to what the development experience is like for iOS I obliged and here are some of my impressions / thoughts from working with it for this short period of time. I’m sure some of my gripes are down to lack of knowledge so if you have any comments or suggestions please share them.</p>
+<p>For some background I come mainly from .NET (predominantly C#) with most of my projects being web based and more recently I’ve done a fair amount of work with Silverlight and WPF. I have done a couple of Java projects and in my early days worked with Progress 4GL and completed a medium sized C++ project. For the prototype I have been running OS X Lion 10.7.3 with Xcode 4.3.3.</p>
+<p>Using Xcode has been….OK. I’m often working on more than one project at a time so only being able to run one instance is a bit of a change for me, especially when trying to learn as I find it useful to go through samples as well as what I’m working on. I found the UI to be a bit cluttered but that’s in part due to the smaller screen estate I’ve been working with. I don’t really have too many gripes with the IDE though I found debugging to be a poor experience. I liked the ease of deploying to either the simulator or a connected device and things like being able to simulate GPS locations is a nice touch. It was also good to see local version control baked in from the start.</p>
+<p>My favourite thing so far has to be storyboards. They’re a quick and easy way to visually layout and design your application including navigating through views. From searching around Google it seems that experienced iOS developers opinion on them is mixed but I found them very useful and was able to be fairly productive before even having to write a single line of code. It would be nice if it was easier to navigate around the storyboard using the mouse instead of scrolling or selecting a UI component from the side bar. I don’t usually use the design view in visual studio very often as I find it quicker to write directly to mark-up but this is something I enjoyed using. Having said that it would be nice to be able to add third party controls in the same way as the native objects rather than having to add them programmatically (I did this with the Tapku calendar control).</p>
+<p>I also like the way that the MVC pattern is used though I found the model part, at least the controller model interaction to be lacking. As part of my prototype I was using a wizard style UI for entering data so the model was used on a number of views. I decided to use prototypes and delegates to pass the model around which works fine though I’m not sure of the best approach. I’d seen people using the NSNotificationCenter or using a singleton in the AppDelegate though they seemed less attractive. This was one of the few things I couldn’t find a decisive answer on as generally there was a plethora of useful information on stackoverflow, github, the apple developer site and various blogs. To persist the data I opted to use core data. This was nice and easy to use and I didn’t encounter any major issues though the NSManagedObject generation seemed a tad flaky.</p>
+<p>One of the things that surprised me was some of the inconsistency with the UI controls. I expected things like the keyboard to automagically show / hide and to be able to set the accessory in the designer but apparently not. Gestures are also opt in generally, I guess it’s credit to some of the apps out there that I expected this default behaviour. This meant that I ended up writing more code than I expected to get some basic functionality working such as showing a picker on a button click rather than showing the picker (I hate that control, takes up way too much space) or populating a table view with the detail of a selected item.</p>
+<p>Overall I’d say I’m still undecided. Maybe with a shiny new MacBook Pro I’d have more fun ☺. One of the biggest hurdles when working with something new is productivity. I know I’d be way more productive using familiar tools but it’s also fun to learn new things and I think I managed to achieve a fair amount in the short time I was given so I’ll definitely be on the lookout for more opportunities to work with the iOS platform in the future.</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&text=Initial Impressions with iOS and XCode"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&is_video=false&description=Initial Impressions with iOS and XCode"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Initial Impressions with iOS and XCode&body=Check out this article: https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&title=Initial Impressions with iOS and XCode"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2012/07/18/Initial-Impressions-with-iOS-and-XCode/&name=Initial Impressions with iOS and XCode&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Dave Timmins
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-43823237-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

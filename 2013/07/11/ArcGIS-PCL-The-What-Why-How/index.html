@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="ArcGIS.PCL is a portable class library for calling ArcGIS Server resources. It is currently built to target .NET for Windows Store apps, .NET framework 4.5, Silverlight 4 and higher &amp;amp; Windows Phon">
+<meta name="keywords" content="arcgis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArcGIS.PCL - The What, Why &amp; How">
+<meta property="og:url" content="https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/index.html">
+<meta property="og:site_name" content="davetimmins.github.io">
+<meta property="og:description" content="ArcGIS.PCL is a portable class library for calling ArcGIS Server resources. It is currently built to target .NET for Windows Store apps, .NET framework 4.5, Silverlight 4 and higher &amp;amp; Windows Phon">
+<meta property="og:updated_time" content="2017-07-16T02:53:16.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArcGIS.PCL - The What, Why &amp; How">
+<meta name="twitter:description" content="ArcGIS.PCL is a portable class library for calling ArcGIS Server resources. It is currently built to target .NET for Windows Store apps, .NET framework 4.5, Silverlight 4 and higher &amp;amp; Windows Phon">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ArcGIS.PCL - The What, Why &amp; How</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="davetimmins.github.io" type="application/atom+xml" />
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/09/15/TechEd-NZ-2013/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&text=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&is_video=false&description=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS.PCL - The What, Why &amp; How&body=Check out this article: https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&name=ArcGIS.PCL - The What, Why &amp; How&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ArcGIS.PCL - The What, Why &amp; How
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">davetimmins.github.io</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2013-07-11T00:00:00.000Z" itemprop="datePublished">2013-07-11</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/arcgis/">arcgis</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><a href="https://github.com/davetimmins/ArcGIS.PCL" target="_blank" rel="external">ArcGIS.PCL</a> is a portable class library for calling ArcGIS Server resources. It is currently built to target .NET for Windows Store apps, .NET framework 4.5, Silverlight 4 and higher &amp; Windows Phone 7.5 and higher. It provides a mechanism to call an ArcGIS Server REST endpoint and to work with the corresponding response.</p>
+<p>I created this project after having several small projects that required some form of communication directly to ArcGIS Server. Since there is no nice way of using an existing Esri SDK from a server side web application or console application I found myself having to write calls directly. Whilst not particularly hard, I found that the code across these projects was similar and so I decided to create a separate project to wrap these calls. It is not intended to be a replacement for any of the Esri SDKs but can be used in situations where they are either overkill or not readily accessible.</p>
+<p>The project uses the concept of a <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/ArcGIS.ServiceModel/IPortalGateway.cs" target="_blank" rel="external">gateway</a> to broker the calls to ArcGIS. This gateway is responsible for determining the call and formatting the request and response types. Requests can be to either secure or insecure resources and each call is referred to as an operation. The gateway caters for secure calls automatically if it is created with user credentials (this assumes that ArcGIS Server token based security is used). Once the gateway is created it can be thought of as the root site for an ArcGIS Server instance.</p>
+<p>The current typed operations supported are:</p>
+<ul>
+<li><p>Generate token</p>
+<ul>
+<li>uses the token service</li>
+<li>automatically generated if an ITokenProvider is passed to the gateway</li>
+<li>auto appended to each request</li>
+<li>automatically regenerated if the token expires</li>
+</ul>
+</li>
+<li><p>Query</p>
+<ul>
+<li>attribute or spatial query</li>
+</ul>
+</li>
+<li><p>Apply Edits</p>
+<ul>
+<li>add, update, delete for a layer in a feature service</li>
+</ul>
+</li>
+<li><p>Single Input Geocode</p>
+</li>
+<li><p>Reverse Geocode</p>
+</li>
+<li><p>Project</p>
+</li>
+<li><p>Simplify</p>
+</li>
+</ul>
+<p>in addition there are two gateway methods used for diagnostics (I could see these being useful when used in a scripting context)</p>
+<ul>
+<li><p>Ping</p>
+<ul>
+<li>determine if a Url can be reached</li>
+</ul>
+</li>
+<li><p>Describe Site</p>
+<ul>
+<li>returns all resource endpoints for an ArcGIS Server instance</li>
+<li>useful for discovery, validating environments are the same (DEV, TEST, PROD), checking access for different user logons, producing documentation (<a href="https://arcgissitedescriptor.azurewebsites.net/" target="_blank" rel="external">example site</a>)</li>
+</ul>
+</li>
+</ul>
+<p>Each time you want to call an operation it is just a case of knowing the endpoint Url for it. Since the gateway already has the root Url, these Url’s are relative to the root for each resource. The interface <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/ArcGIS.ServiceModel/Common/IEndpoint.cs" target="_blank" rel="external">IEndpoint</a> is used for this and for the operations defined it is in the context of an ArcGISServerEndpoint which handles the endpoint Url construction.</p>
+<p>There are also some common objects used for operations that are included. The most notable of these is a <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/ArcGIS.ServiceModel/Common/Feature.cs" target="_blank" rel="external">Feature</a>. This contains <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/ArcGIS.ServiceModel/Common/IGeometry.cs" target="_blank" rel="external">geometry</a> and associated attributes and is used for most common operations. Since it can be serialized as JSON it can also be used to feed into an existing Esri SDK or Web API.</p>
+<p>Due to the project being a portable class library I have split the de/serialization out so that it is specific to each implementation. Each gateway needs an ISerializer implementation that will be used when calling resources. The test project has ServiceStack.Text and Json.NET <a href="https://github.com/davetimmins/ArcGIS.PCL/blob/master/ArcGIS.Test/ISerializer.cs" target="_blank" rel="external">examples</a>.</p>
+<p>In addition to being able to used the typed operations above, you can also call any resource and get the data back by requesting a dynamic object as the return type. There is an example in the tests that shows this where the return is defined as</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class AgsObject : ServiceStack.Text.JsonObject, IPortalResponse</div><div class="line">&#123;</div><div class="line">    [System.Runtime.Serialization.DataMember(Name = "error")]</div><div class="line">    public ArcGISError Error &#123; get; set; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>by using this type, the return value is created as a dictionary containing the results, handy if you don’t want to create a class for the result type (though using the VS Paste Special -&gt; Paste JSON as Classes makes this pretty quick).</p>
+<p>If you are still reading then hopefully you want to get the code and start using it. The quickest way to get started is to install the library using NuGet. Search for <a href="https://www.nuget.org/packages/ArcGIS.PCL/" target="_blank" rel="external">ArcGIS.PCL</a> in the package manager and install it, or you can get the code directly from <a href="https://github.com/davetimmins/ArcGIS.PCL/releases" target="_blank" rel="external">GitHub</a>. Once you have the code the first thing to do is create your gateway and ISerializer implementation (or use an existing example).</p>
+<p>Some typical uses could be</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ArcGIS Server with non secure resources</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ArcGISGateway</span> : <span class="title">PortalGateway</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArcGISGateway</span>(<span class="params">ISerializer serializer</span>)</span></div><div class="line">        : <span class="title">base</span>(<span class="params"><span class="string">"http://sampleserver3.arcgisonline.com/ArcGIS/"</span>, serializer</span>)</div><div class="line">    &#123; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">... <span class="keyword">new</span> ArcGISGateway(serializer);</div><div class="line"></div><div class="line"><span class="comment">// ArcGIS Server with secure resources</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SecureGISGateway</span> : <span class="title">SecureArcGISServerGateway</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecureGISGateway</span>(<span class="params">ISerializer serializer</span>)</span></div><div class="line">        : <span class="title">base</span>(<span class="params"><span class="string">"http://serverapps10.esri.com/arcgis"</span>, <span class="string">"user1"</span>, <span class="string">"pass.word1"</span>, serializer</span>)</div><div class="line">    &#123; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">... <span class="keyword">new</span> SecureGISGateway(serializer);</div><div class="line"></div><div class="line"><span class="comment">// ArcGIS Server with secure resources and token service at different location</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SecureTokenProvider</span> : <span class="title">TokenProvider</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecureTokenProvider</span>(<span class="params">ISerializer serializer</span>)</span></div><div class="line">        : <span class="title">base</span>(<span class="params"><span class="string">"http://serverapps10.esri.com/arcgis"</span>, <span class="string">"user1"</span>, <span class="string">"pass.word1"</span>, serializer</span>)</div><div class="line">    &#123; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SecureGISGateway</span> : <span class="title">PortalGateway</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecureGISGateway</span>(<span class="params">ISerializer serializer, ITokenProvider tokenProvider</span>)</span></div><div class="line">        : <span class="title">base</span>(<span class="params"><span class="string">"http://serverapps10.esri.com/arcgis"</span>, serializer, tokenProvider</span>)</div><div class="line">    &#123; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">... <span class="keyword">new</span> SecureGISGateway(serializer, <span class="keyword">new</span> SecureTokenProvider(serializer));</div><div class="line"></div><div class="line"><span class="comment">// ArcGIS Online either secure or non secure</span></div><div class="line">... <span class="keyword">new</span> ArcGISOnlineGateway(serializer);</div><div class="line"></div><div class="line">... <span class="keyword">new</span> ArcGISOnlineGateway(serializer, <span class="keyword">new</span> ArcGISOnlineTokenProvider(<span class="string">"user"</span>, <span class="string">"pass"</span>, serializer));</div></pre></td></tr></table></figure>
+<p>hopefully you find it easy to work with and any feedback is welcome.</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&text=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&is_video=false&description=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS.PCL - The What, Why &amp; How&body=Check out this article: https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&title=ArcGIS.PCL - The What, Why &amp; How"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2013/07/11/ArcGIS-PCL-The-What-Why-How/&name=ArcGIS.PCL - The What, Why &amp; How&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Dave Timmins
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-43823237-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

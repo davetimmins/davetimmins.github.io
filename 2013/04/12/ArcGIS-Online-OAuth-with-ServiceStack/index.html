@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Esri recently released support for authenticating users and applications using OAuth 2 on their new developer site. In this post we will look at adding a provider to an existing web site built using S">
+<meta name="keywords" content="arcgis,oauth,security,servicestack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArcGIS Online OAuth with ServiceStack">
+<meta property="og:url" content="https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/index.html">
+<meta property="og:site_name" content="davetimmins.github.io">
+<meta property="og:description" content="Esri recently released support for authenticating users and applications using OAuth 2 on their new developer site. In this post we will look at adding a provider to an existing web site built using S">
+<meta property="og:image" content="https://davetimmins.github.io/assets/oauth1.jpg">
+<meta property="og:image" content="https://davetimmins.github.io/assets/oauth2.jpg">
+<meta property="og:image" content="https://davetimmins.github.io/assets/oauth3.jpg">
+<meta property="og:updated_time" content="2017-07-16T02:53:10.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArcGIS Online OAuth with ServiceStack">
+<meta name="twitter:description" content="Esri recently released support for authenticating users and applications using OAuth 2 on their new developer site. In this post we will look at adding a provider to an existing web site built using S">
+<meta name="twitter:image" content="https://davetimmins.github.io/assets/oauth1.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ArcGIS Online OAuth with ServiceStack</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="davetimmins.github.io" type="application/atom+xml" />
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/07/11/ArcGIS-PCL-The-What-Why-How/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2012/07/18/Initial-Impressions-with-iOS-and-XCode/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&text=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&is_video=false&description=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS Online OAuth with ServiceStack&body=Check out this article: https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&name=ArcGIS Online OAuth with ServiceStack&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ArcGIS Online OAuth with ServiceStack
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">davetimmins.github.io</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2013-04-12T00:00:00.000Z" itemprop="datePublished">2013-04-12</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/arcgis/">arcgis</a>, <a class="tag-link" href="/tags/oauth/">oauth</a>, <a class="tag-link" href="/tags/security/">security</a>, <a class="tag-link" href="/tags/servicestack/">servicestack</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Esri recently released support for authenticating users and applications using OAuth 2 on their new developer site. In this post we will look at adding a provider to an existing web site built using <a href="http://www.servicestack.net/" target="_blank" rel="external">ServiceStack</a> to see how you can integrate your ArcGIS Online (AGO) users with another web application.<br>The ArcGIS <a href="https://developers.arcgis.com/en/authentication/" target="_blank" rel="external">documentation</a> covers user and app logins. We will be focusing on user logins since app logins will most likely be transparent to end users via a proxy or the like. To get started you should <a href="https://developers.arcgis.com/en/sign-in/" target="_blank" rel="external">sign in</a> to ArcGIS for Developers with your subscription or developer account and in your applications choose new application and set the details.</p>
+<p>As we want to use OAuth we also need to set the Redirect URI, this should match the location of the provider. For testing my application looks like</p>
+<p><img src="https://davetimmins.github.io/assets/oauth1.jpg" alt="new application"></p>
+<p>once created we can select API Access from the sidebar to get the Client ID and Secret to use when authenticating. Make sure to note these down but do not share them publically</p>
+<p><img src="https://davetimmins.github.io/assets/oauth2.jpg" alt="API access"></p>
+<p>Now that we have our application configured with AGO we are ready to code the OAuth provider. To speed testing up I used the ServiceStack <a href="https://github.com/ServiceStack/SocialBootstrapApi" target="_blank" rel="external">Social Bootstrap template</a> as this already has similar functionality so it is just a matter of adding the new provider. ServiceStack makes this very easy thanks to its excellent documentation and wealth of sample code.</p>
+<p>The details for parameters and urls to call are on the ArcGIS website so I’ll let you look at the code rather than waffling on about it but in a nutshell we are getting verification from AGO that the user is who they say they are and then getting some additional user information via the ArcGIS Portal API.</p>
+<p>There is already an OAuthProvider base class for us to inherit from so we’ll base our implementation on that. The only other steps we need to follow are to register our new authentication provider with ServiceStack by including it as an authentication method in our AppHost</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Register all Authentication methods you want to enable for this web app.</span></div><div class="line">Plugins.Add(<span class="keyword">new</span> AuthFeature(() =&gt; <span class="keyword">new</span> CustomUserSession(), <span class="comment">//Use your own typed Custom UserSession type</span></div><div class="line">    <span class="keyword">new</span> IAuthProvider[] &#123;</div><div class="line">        <span class="keyword">new</span> CredentialsAuthProvider(),              <span class="comment">//HTML Form post of UserName/Password credentials</span></div><div class="line">        <span class="keyword">new</span> TwitterAuthProvider(appSettings),       <span class="comment">//Sign-in with Twitter</span></div><div class="line">        <span class="keyword">new</span> FacebookAuthProvider(appSettings),      <span class="comment">//Sign-in with Facebook</span></div><div class="line">        <span class="keyword">new</span> DigestAuthProvider(appSettings),        <span class="comment">//Sign-in with Digest Auth</span></div><div class="line">        <span class="keyword">new</span> BasicAuthProvider(),                    <span class="comment">//Sign-in with Basic Auth</span></div><div class="line">        <span class="keyword">new</span> GoogleOpenIdOAuthProvider(appSettings), <span class="comment">//Sign-in with Google OpenId</span></div><div class="line">        <span class="keyword">new</span> YahooOpenIdOAuthProvider(appSettings),  <span class="comment">//Sign-in with Yahoo OpenId</span></div><div class="line">        <span class="keyword">new</span> OpenIdOAuthProvider(appSettings),       <span class="comment">//Sign-in with Custom OpenId</span></div><div class="line">        <span class="keyword">new</span> ArcGISAuthProvider(appSettings)         <span class="comment">// Sign-in using our AGO Id</span></div><div class="line">    &#125;));</div></pre></td></tr></table></figure>
+<p>then add the configuration application settings to our web.config to pass through the Client ID and Client Secret that we created earlier. The convention the ServiceStack uses for these is</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">"oauth.arcgis.ConsumerKey"</span> <span class="attr">value</span>=<span class="string">""</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">"oauth.arcgis.ConsumerSecret"</span> <span class="attr">value</span>=<span class="string">""</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>where arcgis is the name defined in our provider. Though as with pretty much everything in ServiceStack the key names can be configured.</p>
+<p>Finally you will need some UI to show the user a link to click and choose to sign in with ArcGIS. This will be a link to points to the same place as the redirect url we configured when adding our application to AGO. Hopefully someone will make a nice icon for people to embed in their sites.</p>
+<p>In <code>Index.cshtml</code> under Views/Shared</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"arcgis-signin"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"~/api/auth/arcgis"</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>When you run the app and click on the sign in with ArcGIS link you will be redirected to AGO where you can now enter your AGO account credentials.</p>
+<p><img src="https://davetimmins.github.io/assets/oauth3.jpg" alt="ArcGIS Online login"></p>
+<p>The full code for the ArcGISAuthProvider is listed below. Thanks for reading.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> ServiceStack.Configuration;</div><div class="line"><span class="keyword">using</span> ServiceStack.ServiceHost;</div><div class="line"><span class="keyword">using</span> ServiceStack.ServiceInterface;</div><div class="line"><span class="keyword">using</span> ServiceStack.ServiceInterface.Auth;</div><div class="line"><span class="keyword">using</span> ServiceStack.Common;</div><div class="line"><span class="keyword">using</span> ServiceStack.Text;</div><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Collections.Generic;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ArcGISAuthProvider</span> : <span class="title">OAuthProvider</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">string</span> Name = <span class="string">"arcgis"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> Realm = <span class="string">"https://www.arcgis.com/sharing/oauth2/"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArcGISAuthProvider</span>(<span class="params">IResourceManager appSettings</span>)</span></div><div class="line">        : <span class="title">base</span>(<span class="params">appSettings, Realm, Name</span>) &#123; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">object</span> <span class="title">Authenticate</span>(<span class="params">IServiceBase authService, IAuthSession session, ServiceStack.ServiceInterface.Auth.Auth request</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> tokens = Init(authService, <span class="keyword">ref</span> session, request);</div><div class="line"></div><div class="line">        <span class="keyword">var</span> error = authService.RequestContext.Get&lt;IHttpRequest&gt;().QueryString[<span class="string">"error"</span>];</div><div class="line">        <span class="keyword">var</span> isPreAuthError = !error.IsNullOrEmpty();</div><div class="line">        <span class="keyword">if</span> (isPreAuthError) <span class="keyword">return</span> authService.Redirect(session.ReferrerUrl);</div><div class="line"></div><div class="line">        <span class="keyword">var</span> code = authService.RequestContext.Get&lt;IHttpRequest&gt;().QueryString[<span class="string">"code"</span>];</div><div class="line">        <span class="keyword">var</span> isPreAuthCallback = !code.IsNullOrEmpty();</div><div class="line">        <span class="keyword">if</span> (!isPreAuthCallback)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> preAuthUrl = Realm + <span class="string">"authorize?response_type=code&amp;client_id=&#123;0&#125;&amp;redirect_uri=&#123;1&#125;"</span>;</div><div class="line">            preAuthUrl = preAuthUrl.Fmt(ConsumerKey, CallbackUrl.UrlEncode());</div><div class="line"></div><div class="line">            authService.SaveSession(session, SessionExpiry);</div><div class="line">            <span class="keyword">return</span> authService.Redirect(preAuthUrl);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> accessTokenUrl = Realm +</div><div class="line">                             <span class="string">"token?grant_type=authorization_code&amp;code=&#123;0&#125;&amp;redirect_uri=&#123;1&#125;&amp;client_id=&#123;2&#125;&amp;client_secret=&#123;3&#125;"</span>;</div><div class="line">        accessTokenUrl = accessTokenUrl.Fmt(code, CallbackUrl.UrlEncode(), ConsumerKey, ConsumerSecret);</div><div class="line"></div><div class="line">        <span class="comment">// get the access token and store the result</span></div><div class="line">        <span class="keyword">var</span> contents = accessTokenUrl.GetStringFromUrl();</div><div class="line">        <span class="keyword">var</span> authInfo = JsonObject.Parse(contents);</div><div class="line">        tokens.AccessToken = authInfo[<span class="string">"access_token"</span>];</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (tokens.AccessToken.IsNullOrEmpty())</div><div class="line">            <span class="keyword">return</span> authService.Redirect(session.ReferrerUrl.AddHashParam(<span class="string">"f"</span>, <span class="string">"AccessTokenFailed"</span>));</div><div class="line"></div><div class="line">        tokens.RefreshToken = authInfo[<span class="string">"refresh_token"</span>];</div><div class="line">        tokens.RefreshTokenExpiry = DateTime.UtcNow.AddSeconds(Double.Parse(authInfo[<span class="string">"expires_in"</span>]));</div><div class="line">        tokens.UserName = authInfo[<span class="string">"username"</span>];</div><div class="line"></div><div class="line">        session.IsAuthenticated = <span class="literal">true</span>;</div><div class="line"></div><div class="line">        OnAuthenticated(authService, session, tokens, authInfo.ToDictionary());</div><div class="line">        authService.SaveSession(session, SessionExpiry);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> authService.Redirect(session.ReferrerUrl.AddHashParam(<span class="string">"s"</span>, <span class="string">"1"</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">LoadUserAuthInfo</span>(<span class="params">AuthUserSession userSession, IOAuthTokens tokens, Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; authInfo</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> url = <span class="string">"https://www.arcgis.com/sharing/rest/community/users/&#123;0&#125;?f=json"</span>;</div><div class="line">        url = url.Fmt(authInfo[<span class="string">"username"</span>]);</div><div class="line">        <span class="keyword">var</span> json = url.GetStringFromUrl();</div><div class="line"></div><div class="line">        <span class="keyword">var</span> data = JsonObject.Parse(json);</div><div class="line">        tokens.DisplayName = data.Get(<span class="string">"fullName"</span>);</div><div class="line">        tokens.FullName = data.Get(<span class="string">"fullName"</span>);</div><div class="line">        <span class="comment">// todo : get more data if available</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">LoadUserOAuthProvider</span>(<span class="params">IAuthSession authSession, IOAuthTokens tokens</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> userSession = authSession <span class="keyword">as</span> AuthUserSession;</div><div class="line">        <span class="keyword">if</span> (userSession == <span class="literal">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        userSession.DisplayName = tokens.DisplayName ?? userSession.DisplayName;</div><div class="line">        userSession.FullName = tokens.FullName ?? userSession.DisplayName;</div><div class="line">        userSession.FirstName = tokens.FirstName ?? userSession.FirstName;</div><div class="line">        userSession.LastName = tokens.LastName ?? userSession.LastName;</div><div class="line">        userSession.PrimaryEmail = tokens.Email ?? userSession.PrimaryEmail ?? userSession.Email;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&text=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&is_video=false&description=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArcGIS Online OAuth with ServiceStack&body=Check out this article: https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&title=ArcGIS Online OAuth with ServiceStack"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://davetimmins.github.io/2013/04/12/ArcGIS-Online-OAuth-with-ServiceStack/&name=ArcGIS Online OAuth with ServiceStack&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Dave Timmins
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="https://github.com/davetimmins/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-43823237-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
