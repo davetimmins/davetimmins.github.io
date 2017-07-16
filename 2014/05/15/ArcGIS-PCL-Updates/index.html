@@ -13,14 +13,14 @@
 <meta property="og:url" content="https://davetimmins.github.io/2014/05/15/ArcGIS-PCL-Updates/index.html">
 <meta property="og:site_name" content="davetimmins.github.io">
 <meta property="og:description" content="Inspired by a recent blog post by @paulcbetts I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality s">
-<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispclsolution original.png">
-<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispclsolution current.png">
-<meta property="og:image" content="https://davetimmins.github.io/assets/arcgispcl project comp.png">
-<meta property="og:updated_time" content="2017-07-16T02:53:24.159Z">
+<meta property="og:image" content="https://davetimmins.github.io/images/arcgispclsolution original.png">
+<meta property="og:image" content="https://davetimmins.github.io/images/arcgispclsolution current.png">
+<meta property="og:image" content="https://davetimmins.github.io/images/arcgispcl project comp.png">
+<meta property="og:updated_time" content="2017-07-16T03:11:52.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArcGIS.PCL Updates">
 <meta name="twitter:description" content="Inspired by a recent blog post by @paulcbetts I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality s">
-<meta name="twitter:image" content="https://davetimmins.github.io/assets/arcgispclsolution original.png">
+<meta name="twitter:image" content="https://davetimmins.github.io/images/arcgispclsolution original.png">
     
     
         
@@ -72,7 +72,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2014/06/30/Using-ArcGIS-Server-with-Xamarin-Forms-Maps/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        <li><a class="icon" href="/2014/06/30/Simple-Extent-Sharing-for-your-Map-App/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
         <li><a class="icon" href="/2014/04/11/Sneaky-searching-with-a-Fake-ArcGIS-Locator-and-Nancy/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
@@ -143,12 +143,12 @@
   <div class="content" itemprop="articleBody">
     <p>Inspired by a recent blog post by <a href="https://twitter.com/paulcbetts" target="_blank" rel="external">@paulcbetts</a> I decided to review the ArcGIS.PCL project and see how I can improve it. Previously I was just using the all in approach to package up the functionality so no matter what platform you were targeting, the same code and dependencies would be used. This was working fine to some degree but I realised that I was including more than I needed to for certain platforms and I had also been wondering on the best way to implement some code that wasn’t available to a portable class library. Moving to this updated approach has allowed me to do both of these things better and with very little effort so I’ll explain what I did.</p>
 <p>The original solution looked like this.</p>
-<p><img src="https://davetimmins.github.io/assets/arcgispclsolution original.png" alt="Original solution"></p>
+<p><img src="https://davetimmins.github.io/images/arcgispclsolution original.png" alt="Original solution"></p>
 <p>With just the portable class library and some tests. Whereas the current solution is</p>
-<p><img src="https://davetimmins.github.io/assets/arcgispclsolution current.png" alt="Current solution"></p>
+<p><img src="https://davetimmins.github.io/images/arcgispclsolution current.png" alt="Current solution"></p>
 <p>This has the same portable class library with almost all of the same code in it but now there are platform specific projects which allow for platform specific code to be written for each of them is required. The portable class library project now only references the .NET Portable Subset too. Since I left the majority of the code in the PCL, I also reference the PCL from the platform specific projects.</p>
 <p>In addition to using the PCL in the other projects I have a couple of other classes that are the same code but since their platform dependencies are different I am not including them in the PCL. Rather than copy the code for each project I just add them as linked files, so if we look at the iOS and .NET versions you can see that they both have 2 linked files and then just 1 platform specific file</p>
-<p><img src="https://davetimmins.github.io/assets/arcgispcl project comp.png" alt="Project comparison"></p>
+<p><img src="https://davetimmins.github.io/images/arcgispcl project comp.png" alt="Project comparison"></p>
 <p>So what I’ve had to do so far is</p>
 <ul>
 <li>Create new projects, 1 for each supported platform</li>
