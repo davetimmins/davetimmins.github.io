@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://davetimmins.github.io/"/>
-  <updated>2017-07-17T00:08:21.205Z</updated>
+  <updated>2017-07-17T00:16:38.643Z</updated>
   <id>https://davetimmins.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://davetimmins.github.io/2017/07/16/Integrating-Secure-SPAs-APIs-and-ArcGIS-Server/"/>
     <id>https://davetimmins.github.io/2017/07/16/Integrating-Secure-SPAs-APIs-and-ArcGIS-Server/</id>
     <published>2017-07-15T22:39:56.000Z</published>
-    <updated>2017-07-17T00:08:21.205Z</updated>
+    <updated>2017-07-17T00:16:38.643Z</updated>
     
-    <content type="html"><![CDATA[<p>This post outlines a technique I have used recently for consuming secure ArcGIS Server services using the built in ArcGIS token store from a client side SPA using the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API v4.4</a> whilst having a separate identity store for the application. There are 4 main application components to consider:</p>
+    <content type="html"><![CDATA[<p>This post outlines a technique I have used recently for consuming secure ArcGIS Server services using the built in ArcGIS token store from a client side SPA with the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API v4.4</a> whilst having a separate identity store for the application. There are 4 main application components to consider:</p>
 <ul>
 <li>the identity provider for our application / API</li>
 <li>a server side API for data access</li>
