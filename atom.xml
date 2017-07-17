@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://davetimmins.github.io/"/>
-  <updated>2017-07-17T00:17:10.736Z</updated>
+  <updated>2017-07-17T00:18:24.719Z</updated>
   <id>https://davetimmins.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://davetimmins.github.io/2017/07/16/Integrating-Secure-SPAs-APIs-and-ArcGIS-Server/"/>
     <id>https://davetimmins.github.io/2017/07/16/Integrating-Secure-SPAs-APIs-and-ArcGIS-Server/</id>
     <published>2017-07-15T22:39:56.000Z</published>
-    <updated>2017-07-17T00:17:10.736Z</updated>
+    <updated>2017-07-17T00:18:24.719Z</updated>
     
     <content type="html"><![CDATA[<p>This post outlines a technique I have used recently for consuming secure ArcGIS Server services (using the built in ArcGIS token store) from a client side SPA with the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API v4.4</a> whilst having a separate identity store for the application. There are 4 main application components to consider:</p>
 <ul>
@@ -61,6 +61,8 @@
     
     </summary>
     
+    
+      <category term="arcgis,dotnet,security" scheme="https://davetimmins.github.io/tags/arcgis-dotnet-security/"/>
     
   </entry>
   
@@ -579,13 +581,13 @@
     
       <category term="arcgis" scheme="https://davetimmins.github.io/tags/arcgis/"/>
     
+      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
+    
       <category term="oauth" scheme="https://davetimmins.github.io/tags/oauth/"/>
     
       <category term="security" scheme="https://davetimmins.github.io/tags/security/"/>
     
       <category term="servicestack" scheme="https://davetimmins.github.io/tags/servicestack/"/>
-    
-      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
     
   </entry>
   
