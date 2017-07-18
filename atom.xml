@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://davetimmins.github.io/"/>
-  <updated>2017-07-18T19:41:18.330Z</updated>
+  <updated>2017-07-18T20:02:55.835Z</updated>
   <id>https://davetimmins.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://davetimmins.github.io/2017/07/19/esri-loader-react/"/>
     <id>https://davetimmins.github.io/2017/07/19/esri-loader-react/</id>
     <published>2017-07-18T18:39:21.000Z</published>
-    <updated>2017-07-18T19:41:18.330Z</updated>
+    <updated>2017-07-18T20:02:55.835Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://github.com/davetimmins/esri-loader-react" target="_blank" rel="external">esri-loader-react</a> is a small React component that wraps <a href="https://github.com/Esri/esri-loader" target="_blank" rel="external">esri-loader</a>.</p>
 <h3 id="esri-loader-and-esri-loader-react"><a href="#esri-loader-and-esri-loader-react" class="headerlink" title="esri-loader and esri-loader-react"></a>esri-loader and esri-loader-react</h3><p>If you’re doing web development with the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API</a> then chances are that you’ve encountered issues with the dojo loader either using custom libraries, different JS frameworks or modern build tooling. <a href="https://github.com/Esri/esri-loader" target="_blank" rel="external">esri-loader</a> is a great way to circumvent these issues. It works by injecting the <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API</a> into your page at runtime so you only use the dojo loader for any <a href="https://developers.arcgis.com/javascript/" target="_blank" rel="external">Esri JS API</a> modules that you need. It was originally written by [@tomwayson][(<a href="https://twitter.com/tomwayson" target="_blank" rel="external">https://twitter.com/tomwayson</a>) and he has a great <a href="http://tomwayson.com/2016/11/27/using-the-arcgis-api-for-javascript-in-applications-built-with-webpack/" target="_blank" rel="external">blog post</a> on some of the challenges for this type of approach.</p>
@@ -55,8 +55,9 @@
 <li><a href="https://github.com/davetimmins/create-react-app-esri-loader/" target="_blank" rel="external">create-react-app-esri-loader</a></li>
 <li><a href="https://github.com/tomwayson/esri-react-router-example" target="_blank" rel="external">esri-react-router-example</a></li>
 <li><a href="https://github.com/davetimmins/arcgis-react-redux-legend" target="_blank" rel="external">arcgis-react-redux-legend</a></li>
+<li><a href="https://github.com/davetimmins/preact-legend" target="_blank" rel="external">preact-legend</a> yes it works with <a href="https://preactjs.com/" target="_blank" rel="external">Preact</a> too</li>
 </ul>
-<p>I haven’t used this but it looks to do something similar so check it out <a href="https://github.com/nicksenger/esri-promise" target="_blank" rel="external">esri-promise</a></p>
+<p>I haven’t used this but it looks to do something similar to <a href="https://github.com/Esri/esri-loader" target="_blank" rel="external">esri-loader</a> so check it out <a href="https://github.com/nicksenger/esri-promise" target="_blank" rel="external">esri-promise</a></p>
 ]]></content>
     
     <summary type="html">
