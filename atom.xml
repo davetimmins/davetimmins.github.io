@@ -125,9 +125,9 @@
     
       <category term="arcgis" scheme="https://davetimmins.github.io/tags/arcgis/"/>
     
-      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
-    
       <category term="security" scheme="https://davetimmins.github.io/tags/security/"/>
+    
+      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
     
   </entry>
   
@@ -646,13 +646,13 @@
     
       <category term="arcgis" scheme="https://davetimmins.github.io/tags/arcgis/"/>
     
-      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
-    
       <category term="oauth" scheme="https://davetimmins.github.io/tags/oauth/"/>
     
       <category term="security" scheme="https://davetimmins.github.io/tags/security/"/>
     
       <category term="servicestack" scheme="https://davetimmins.github.io/tags/servicestack/"/>
+    
+      <category term="dotnet" scheme="https://davetimmins.github.io/tags/dotnet/"/>
     
   </entry>
   
